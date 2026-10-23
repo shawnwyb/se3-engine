@@ -10,8 +10,11 @@ source .venv/bin/activate
 # Install dependencies
 python -m pip install -r requirements.txt
 
-# Run the project
+# Run the moving-frame visualizer
 python main.py
+
+# Run the SE(3) checks
+python -m unittest -v
 ```
 
 To leave the virtual environment:
@@ -20,4 +23,7 @@ To leave the virtual environment:
 deactivate
 ```
 
-Add `.venv/` to `.gitignore` before committing.
+The visualizer draws frames A, B, and C in A's coordinates. B moves relative
+to A, C moves relative to B, and `compose()` places C in A. Red, green, and
+blue arrows show each frame's x, y, and z axes. The demo uses the rotations
+from the hand calculation and moves the frame origins.
