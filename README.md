@@ -1,5 +1,11 @@
 # SE(3) Engine
 
+A coordinate frame is an origin and three perpendicular unit directions. The same physical point can have different coordinates in different frames, so converting between them requires knowing their relative rotation and translation.
+
+These rigid transformations form SE(3), the special Euclidean group in three dimensions. They preserve distances and handedness, with no stretching or mirror flips. This project represents them as 4x4 homogeneous matrices and uses them to convert points, compose and invert transforms, and visualize moving frames.
+
+Tests check point conversion, composition, inversion, and rotation validity. An animation shows a chain of moving frames.
+
 ## Setup
 
 ```bash
