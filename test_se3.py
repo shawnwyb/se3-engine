@@ -6,6 +6,18 @@ from se3 import SE3
 
 
 class TestSE3(unittest.TestCase):
+    def test_rejects_invalid_rotations(self):
+        for rotation in (np.diag([1, -1, 1]), np.diag([2, 1, 1])):
+            with self.subTest(rotation=rotation):
+                with self.assertRaises(ValueError):
+                    SE3(rotation, [0, 0, 0])
+
+    def test_rejects_invalid_shapes(self):
+        with self.assertRaises(ValueError):
+            SE3(np.eye(2), [0, 0, 0])
+        with self.assertRaises(ValueError):
+            SE3(np.eye(3), [0, 0])
+
     def test_transform_point_and_inverse(self):
         transform = SE3(
             np.array([[0, -1, 0], [1, 0, 0], [0, 0, 1]]),
