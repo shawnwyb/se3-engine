@@ -6,6 +6,8 @@ These rigid transformations form SE(3), the special Euclidean group in three dim
 
 Tests check point conversion, composition, inversion, and rotation validity. An animation shows a chain of moving frames.
 
+<img width="520" alt="readme-demo" src="https://github.com/user-attachments/assets/147e755f-d0e9-40c7-a530-9926364a75b4" />
+
 ## Setup
 
 ```bash
