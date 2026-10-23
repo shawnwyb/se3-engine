@@ -7,7 +7,8 @@ class SE3:
         self.matrix[:3, 3] = t
     
     def convertbtoa(self, b):
-        a = np.dot(self.matrix, b)
+        b_homogeneous = np.append(b, 1)
+        a = np.dot(self.matrix, b_homogeneous)
         return a
 
 R = np.array(
@@ -19,7 +20,7 @@ t = np.array([4, 1, 2])
 
 se3 = SE3(R, t)
 
-b = np.array([2, 3, 5, 1])
+b = np.array([2, 3, 5])
 
 print(se3.convertbtoa(b))
 
