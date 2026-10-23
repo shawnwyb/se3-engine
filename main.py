@@ -1,6 +1,14 @@
 import numpy as np
 
 class SE3:
+    """
+    Represent a rigid transform from a source frame to a target frame.
+
+    R's columns are the source axes expressed in the target frame, and t
+    is the source origin expressed in the target frame. transform_point()
+    converts a point; inverse() returns the reverse transform.
+    """
+
     def __init__(self, R, t):
         self.T = np.eye(4)
         self.T[:3, :3] = R
