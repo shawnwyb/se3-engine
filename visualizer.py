@@ -3,7 +3,7 @@ from matplotlib.animation import FuncAnimation
 import numpy as np
 
 
-def draw_frame(ax, transform, name, length=0.8):
+def draw_frame(ax, transform, name, length=1.0):
     """Draw a frame's origin and three axes in A coordinates."""
     origin = transform.transform_point([0, 0, 0])
     for axis_name, direction, color in (
@@ -28,16 +28,16 @@ def draw_scene(ax, frames):
     origins = [transform.transform_point([0, 0, 0]) for transform in frames.values()]
     ax.plot(*np.array(origins).T, color="gray", linestyle="--", alpha=0.6)
     ax.set(
-        xlim=(-1, 7), ylim=(-3, 3), zlim=(-1, 5),
+        xlim=(-3, 7), ylim=(-3, 5), zlim=(-1, 5),
         xlabel="A x", ylabel="A y", zlabel="A z",
     )
-    ax.set_box_aspect((8, 6, 6))
+    ax.set_box_aspect((10, 8, 6))
     ax.set_title("Moving coordinate frames (red x, green y, blue z)")
 
 
 def animate_frames(frame_sequence):
     """Show a sequence of A-coordinate frame poses."""
-    fig = plt.figure(figsize=(8, 6))
+    fig = plt.figure(figsize=(9, 7))
     ax = fig.add_subplot(projection="3d")
     animation = FuncAnimation(
         fig,

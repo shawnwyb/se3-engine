@@ -23,7 +23,7 @@ To leave the virtual environment:
 deactivate
 ```
 
-The visualizer draws frames A, B, and C in A's coordinates. B moves relative
-to A, C moves relative to B, and `compose()` places C in A. Red, green, and
-blue arrows show each frame's x, y, and z axes. The demo uses the rotations
-from the hand calculation and moves the frame origins.
+The visualizer draws frames A, B, and C in A's coordinates. B turns and moves
+relative to A, C moves relative to B, and `compose()` places C in A. Red,
+green, and blue arrows show each frame's x, y, and z axes. B starts at the
+orientation from the hand calculation and completes one turn.

@@ -5,14 +5,18 @@ from visualizer import animate_frames
 
 
 def make_frame_sequence():
-    """Move B in A and C in B, then express every frame in A."""
+    """Turn and move B in A, then express the moving C frame in A."""
     frame_a = SE3(np.eye(3), np.zeros(3))
-    rotation_ab = np.array([[0, 1, 0], [-1, 0, 0], [0, 0, 1]])
     rotation_bc = np.array([[1, 0, 0], [0, -1, 0], [0, 0, -1]])
 
     sequence = []
     for step in range(120):
         phase = 2 * np.pi * step / 120
+        angle = phase - np.pi / 2
+        cosine, sine = np.cos(angle), np.sin(angle)
+        rotation_ab = np.array(
+            [[cosine, -sine, 0], [sine, cosine, 0], [0, 0, 1]]
+        )
         transform_ab = SE3(rotation_ab, [2 + 0.8 * np.sin(phase), 1, 0])
         transform_bc = SE3(rotation_bc, [1, 2 + 0.7 * np.cos(phase), 3])
         sequence.append(
